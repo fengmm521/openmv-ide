@@ -43,12 +43,16 @@ https://stackoverflow.com/a/34032216
 Note that some modifications to the above solution may be needed.
 
 
-注册码：
+# 注册码逻辑：
+
 qt-creator/src/plugins/openmv/openmvplugin.cpp文件的3623行
-                            if((reply->error() == QNetworkReply::NoError) && (!data.isEmpty()))
-                            {
-                                if(QString::fromUtf8(data).contains(QStringLiteral("<p>No</p>")))
-                                {
-//                                    QTimer::singleShot(0, this, [this, board, id] { registerOpenMVCam(board, id); });
-                                }
-                            }
+
+```C++
+if((reply->error() == QNetworkReply::NoError) && (!data.isEmpty()))
+{
+     if(QString::fromUtf8(data).contains(QStringLiteral("<p>No</p>")))
+     {
+//        QTimer::singleShot(0, this, [this, board, id] { registerOpenMVCam(board, id); });
+      }
+}
+```
